@@ -292,5 +292,5 @@ void main()
 	Fraction A(1, 2);
 	Fraction B(5, 10);
 	cout << (A == B) << endl;
-	
+
 }

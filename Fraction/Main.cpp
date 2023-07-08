@@ -280,10 +280,11 @@ std::istream& operator>>(std::istream& is, Fraction& obj)
 	obj.set_denominator(denominator);*/
 	const int SIZE = 256;
 	char buffer[SIZE] = {};
-	cin.getline(buffer, SIZE);
+	//cin.getline(buffer, SIZE);
+	cin >> buffer;
 	int number[3] = {};
 	int n = 0; //счёстчик введённых чисел
-	char delimiters[] = "()/ ";
+	char delimiters[] = "()/";
 	for (char* pch = strtok(buffer, delimiters); pch; pch = strtok(NULL, delimiters))
 		number[n++] = std :: atoi(pch);
 	// atoi() - ASCII-string to 'int', принимает строку и возвращает целое число, которое содержится в этой строке
@@ -297,7 +298,9 @@ std::istream& operator>>(std::istream& is, Fraction& obj)
 	return is;
 }
 //#define CONSTRUCTORS_CHECK
-//#define 
+//#define INPUT_CHECK1
+#define INPUT_CHECK2
+
 
 void main()
 {
@@ -322,9 +325,16 @@ void main()
 	F = D;
 	F.print();
 #endif;
+#ifdef INPUT_CHECK1
 	Fraction A(5,10);
 	cout << "Введите простую дробь: ";	cin >> A;
+	cout << A << endl;
 	A.reduce();
 	cout << A << endl;
-	
+#endif;
+#ifdef INPUT_CHECK2
+	Fraction A, B, C;
+	cout << "Введите три простые дроби: "; cin >> A >> B >> C;
+	cout << A << "\t" << B << "\t" << C << endl;
+#endif;
 }

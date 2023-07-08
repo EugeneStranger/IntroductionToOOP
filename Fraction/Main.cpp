@@ -170,7 +170,7 @@ public:
 		int nod = nod_evklid(this->numerator, this->denominator);
 		this->numerator = this->numerator / nod;
 		this->denominator = this->denominator / nod;
-		//if (nod == 1) cout << "Невозможно сократить дробь." << endl;
+		if (nod == 1) cout << "Невозможно сократить дробь." << endl;
 		return *this;
 	}
 };
@@ -231,19 +231,13 @@ bool operator<(Fraction left, Fraction right)
 {
 	left.to_improper();
 	right.to_improper();
-	left.reduce();
-	right.reduce();
-	int nok1 = nok(left.get_denominator(), right.get_denominator());
-	return ((left.get_numerator() * (nok1 / left.get_denominator())) < (right.get_numerator() * (nok1 / right.get_denominator())));
+	return (left.get_numerator() * right.get_denominator() < right.get_numerator() * left.get_denominator());
 }
 bool operator==(Fraction left, Fraction right)
 {
 	left.to_improper();
 	right.to_improper();
-	left.reduce();
-	right.reduce();
-	int nok1 = nok(left.get_denominator(), right.get_denominator());
-	return ((left.get_numerator() * (nok1 / left.get_denominator())) == (right.get_numerator() * (nok1 / right.get_denominator())));
+	return (left.get_numerator() * right.get_denominator() == right.get_numerator() * left.get_denominator());
 }
 bool operator>(Fraction left, Fraction right)
 {
@@ -295,13 +289,8 @@ void main()
 	F = D;
 	F.print();
 #endif;
-	Fraction A(1, 2, 5);
-	A.print();
-//	Fraction B(1, 5, 10);
-//	B.print();
-	A--;
-	A.print();
-
-	//if (B >= A) { cout << "B>=A" << endl;}
+	Fraction A(1, 2);
+	Fraction B(5, 10);
+	cout << (A == B) << endl;
 	
 }

@@ -299,7 +299,7 @@ std::istream& operator>>(std::istream& is, Fraction& obj)
 }
 //#define CONSTRUCTORS_CHECK
 //#define INPUT_CHECK1
-#define INPUT_CHECK2
+//#define INPUT_CHECK2
 
 
 void main()

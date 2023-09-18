@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 using namespace std;
 using std::cout;
 using std::cin;
@@ -9,8 +9,8 @@ using std::endl;
 
 class String
 {
-	int size; //Ðàçìåð ñòðîêè ëó÷øå óêàçûâàòü â áàéòàõ
-	char* str; //Àäðåñ ñòðîêè â äèíàìè÷åñêîé ïàìÿòè
+	int size; //Ð Ð°Ð·Ð¼ÐµÑ€ ÑÑ‚Ñ€Ð¾ÐºÐ¸ Ð»ÑƒÑ‡ÑˆÐµ ÑƒÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð² Ð±Ð°Ð¹Ñ‚Ð°Ñ…
+	char* str; //ÐÐ´Ñ€ÐµÑ ÑÑ‚Ñ€Ð¾ÐºÐ¸ Ð² Ð´Ð¸Ð½Ð°Ð¼Ð¸Ñ‡ÐµÑÐºÐ¾Ð¹ Ð¿Ð°Ð¼ÑÑ‚Ð¸
 public:
 	int get_size()const
 	{
@@ -39,7 +39,7 @@ public:
 	}
 	String(const String& other)
 	{
-		//Deep copy(ïîáèòîâîå êîïèðîâàíèå)
+		//Deep copy(Ð¿Ð¾Ð±Ð¸Ñ‚Ð¾Ð²Ð¾Ðµ ÐºÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ)
 		this->size = other.size;
 		this->str = new char[size] {};
 		for (int i = 0; i < size; i++)this->str[i] = other.str[i];

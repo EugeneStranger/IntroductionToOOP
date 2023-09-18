@@ -5,7 +5,7 @@ using std::cin;
 using std::endl;
 
 #define tab "\t"
-#define delimiter "--------------------------------------------------------------------\n"
+#define delimiter "\n--------------------------------------------------------------------\n"
 
 class String
 {
@@ -43,7 +43,16 @@ public:
 		this->size = other.size;
 		this->str = new char[size] {};
 		for (int i = 0; i < size; i++)this->str[i] = other.str[i];
-		cout << "CopyConstructor:\t" << this << endl;
+		cout << "CopyConstructor:" << this << endl;
+	}
+	String(String&& other)
+	{
+		//Shallow copy
+		this->size = other.size;
+		this->str = other.str;
+		other.size = 0;
+		other.str = 0;
+		cout << "MoveConstructor:" << this << endl;
 	}
 	~String()
 	{
@@ -59,9 +68,19 @@ public:
 		this->size = other.size;
 		this->str = new char[size] {};
 		for (int i = 0; i < size; i++)this->str[i] = other.str[i];
-		cout << "CopyConstructor:\t" << this << endl;
+		cout << "CopyAssignment: " << this << endl;
 		return *this;
-
+	}
+	String& operator=(String&& other)
+	{
+		if (this == &other) return *this;
+		delete[] this->str;
+		this->size = other.size;
+		this->str = other.str;
+		other.size = 0;
+		other.str = nullptr;
+		cout << "MoveAssignment:\t" << this << endl;
+		return *this;
 	}
 	char operator[](int i)const
 	{
@@ -97,9 +116,12 @@ String operator+(const String& left, const String& right)
 	return cat;
 }
 
+#define CONSTRUCTORS
+
 void main()
 {
 	setlocale(LC_ALL, "");
+#ifdef CONSTRUCTORS
 	cout << sizeof("Hello") << endl;
 	String str;
 	str.print();
@@ -110,12 +132,11 @@ void main()
 	String str2 = "World";
 	cout << str2 << endl;
 	cout << delimiter;
-	String str3 = str1+ str2;
+	String str3 = str1 + str2;
 	cout << str3 << endl;
-
+	cout << delimiter;
 	String str4;
-	str4 = str1 +" "+ str2;
+	str4 = str1 + str2;
 	cout << str4 << endl;
-
-
+#endif // CONSTRUCTORS
 }

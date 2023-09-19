@@ -47,7 +47,8 @@ char* String::get_str()
 }
 //			Constructors
 // Ключевое слово 'expliciet' можно использовать только внутри класса
-String::String(int size) :size(size), str(new char[size] {})	//Default constructor
+//Параметры по умолчанию пишутся в прототипах функций
+String::String(int size /*=80*/) :size(size), str(new char[size] {})	//Default constructor
 {
 	cout << "DefConstructor:\t" << this << endl;
 }

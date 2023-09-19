@@ -7,10 +7,9 @@ using namespace std;
 class Matrix
 {
 private:
-    int** arr; 
     int Row;
     int Col;
-
+    int** arr;
 public:
     int GetMij(int i, int j)
     {
@@ -36,19 +35,13 @@ public:
        arr[i][j] = value;
     }
                                              // Constructors
-    Matrix()
+    Matrix():arr(new int* [Row])
     {
-       this->Row = 0;
-       this->Col = 0;
-       this->arr = nullptr;
+        cout << "DefaulConstructor:\t" << this << endl;
     }
 
-    Matrix(int Row, int Col)
+    Matrix(int Row, int Col):Row(Row),Col(Col),arr(new int*[Row])
     {
-        this->Row = Row;
-        this->Col = Col;
-        this->arr = (int**) new int* [Row];
-
         for (int i = 0; i < Row; i++)
             arr[i] = (int*)new int[Col];
 
@@ -57,12 +50,8 @@ public:
                 arr[i][j] = 0;
     }
 
-    Matrix(const Matrix& other)
+    Matrix(const Matrix& other):Row(other.Row),Col(other.Col),arr(new int*[Row])
     {
-        this->Row = other.Row;
-        this->Col = other.Col;
-        this->arr = (int**) new int * [Row];
-
         for (int i = 0; i < Row; i++)
             this->arr[i] = (int*) new int[Col];
 

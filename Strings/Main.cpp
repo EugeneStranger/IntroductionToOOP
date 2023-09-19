@@ -29,7 +29,7 @@ public:
 	{
 		cout << "DefConstructor:\t" << this << endl;
 	}
-	String(const char* str) :String(strlen(str) + 1)					//One-single constructor
+	String(const char* str) :String(strlen(str) + 1)					//Single-argument constructor
 	{
 		for (int i = 0; str[i]; i++)this->str[i] = str[i];
 		cout << "Constructor:\t" << this << endl;

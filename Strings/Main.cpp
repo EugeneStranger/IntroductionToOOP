@@ -9,8 +9,8 @@ using std::endl;
 
 class String
 {
-	int size; //Размер строки лучше указывать в байтах
-	char* str; //Адрес строки в динамической памяти
+	int size;	//Размер строки лучше указывать в байтах
+	char* str;	//Адрес строки в динамической памяти
 public:
 	int get_size()const
 	{
@@ -25,33 +25,23 @@ public:
 		return str;
 	}
 	//			Constructors
-	explicit String(int size = 80) :size(size), str(new char[size] {})
+	explicit String(int size = 80) :size(size), str(new char[size] {})	//Default constructor
 	{
-		//this->size = size;
-		//this->str = new char[size] {};
 		cout << "DefConstructor:\t" << this << endl;
 	}
-	String(const char* str) :size(strlen(str) + 1), str(new char[size] {})
+	String(const char* str) :String(strlen(str) + 1)					//One-single constructor
 	{
-		//int a(2);
-		//this->size = strlen(str) + 1;
-		//this->str = new char[size] {};
 		for (int i = 0; str[i]; i++)this->str[i] = str[i];
 		cout << "Constructor:\t" << this << endl;
 	}
-	String(const String& other):size(other.size),str(new char[size]{})
+	String(const String& other):String(other.str)
 	{
 		//Deep copy(побитовое копирование)
-		//this->size = other.size;
-		//this->str = new char[size] {};
-		for (int i = 0; i < size; i++)this->str[i] = other.str[i];
 		cout << "CopyConstructor:" << this << endl;
 	}
 	String(String&& other):size(other.size),str(other.str)
 	{
 		//Shallow copy
-		//this->size = other.size;
-		//this->str = other.str;
 		other.size = 0;
 		other.str = 0;
 		cout << "MoveConstructor:" << this << endl;

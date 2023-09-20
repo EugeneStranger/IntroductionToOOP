@@ -1,4 +1,4 @@
-﻿#include "String.h"
+﻿#include "MyString.h"
 #define BASECHECK
 //#define CALLING_CONSTRUCTOR
 
